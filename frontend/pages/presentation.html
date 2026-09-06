@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentation Practice | Vocalis AI</title>
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/typography.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-mount"></div>
+    <div class="main-wrapper">
+      <div id="header-mount"></div>
+
+      <main class="content-container">
+        <div style="margin-bottom: 24px;">
+          <h1 class="text-gradient">Presentation Practice</h1>
+          <p class="text-lead">Rehearse project pitches, architecture walkthroughs, and conference talks with structural feedback.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px;">
+          <div class="card">
+            <div class="form-group">
+              <label class="form-label" for="pres-topic">Presentation Title</label>
+              <input type="text" id="pres-topic" class="form-input" value="Scalable Backend Architecture with Node.js & MongoDB">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="pres-type">Format</label>
+              <select id="pres-type" class="form-select">
+                <option value="technical_pitch">Technical Project Pitch</option>
+                <option value="hackathon_demo">Hackathon Demo Presentation</option>
+                <option value="keynote">Keynote / Public Address</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="pres-transcript">Speech Transcript</label>
+              <textarea id="pres-transcript" class="form-textarea" rows="10" placeholder="Deliver your talk here... Include your opening hook, main points, and call to action."></textarea>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px;">
+              <button id="pres-mic-btn" class="btn btn-secondary">🎤 Rehearse Aloud</button>
+              <button id="pres-submit-btn" class="btn btn-primary">Critique Delivery →</button>
+            </div>
+          </div>
+
+          <div id="pres-evaluation-box" class="card">
+            <div style="text-align: center; padding: 50px 24px; color: var(--text-dim);">
+              <div style="font-size: 3.5rem; margin-bottom: 12px; filter: drop-shadow(0 0 16px var(--primary-glow));">🎤</div>
+              <h3 style="color: #ffffff;">Structural Breakdown</h3>
+              <p style="margin-top: 8px;">Submit your speech to evaluate opening hook strength, transition signposts, and takeaway impact.</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="module" src="/js/pages/presentation.js"></script>
+</body>
+</html>

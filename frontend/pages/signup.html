@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account | Vocalis AI</title>
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/typography.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <style>
+    .auth-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .auth-card {
+      width: 100%;
+      max-width: 480px;
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-wrapper">
+    <div class="card auth-card">
+      <div style="text-align: center; margin-bottom: 24px;">
+        <div style="width: 46px; height: 46px; border-radius: var(--radius-sm); background: linear-gradient(135deg, var(--primary), var(--secondary)); display: inline-flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.4rem; margin-bottom: 12px; box-shadow: 0 0 20px var(--primary-glow);">V</div>
+        <h2>Create Account</h2>
+        <p class="text-sub">Build fluency and speaking confidence through real conversation</p>
+      </div>
+
+      <form id="signup-form">
+        <div class="form-group">
+          <label class="form-label" for="name">Full Name</label>
+          <input type="text" id="name" class="form-input" required placeholder="Hanumantha Rao">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address</label>
+          <input type="email" id="email" class="form-input" required placeholder="you@domain.com">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Password (min. 8 characters)</label>
+          <input type="password" id="password" class="form-input" required minlength="8" placeholder="••••••••">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="targetProficiency">Current Speaking Focus</label>
+          <select id="targetProficiency" class="form-select">
+            <option value="beginner">Foundational (Building basic sentence comfort)</option>
+            <option value="intermediate" selected>Intermediate (Improving clarity, flow & vocabulary)</option>
+            <option value="advanced">Advanced (Executive presence, storytelling & interviews)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 13px; margin-top: 10px;">Create Free Account</button>
+      </form>
+
+      <div style="text-align: center; margin-top: 24px;">
+        <p class="text-sub">Already have an account? <a href="/pages/login.html" style="color: var(--primary-light); font-weight: 600;">Log in</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/js/pages/signup.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Friend Chat | Vocalis AI</title>
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/typography.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/chat.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-mount"></div>
+    <div class="main-wrapper">
+      <div id="header-mount"></div>
+
+      <main class="content-container" style="padding-top: 16px; padding-bottom: 16px;">
+        <div class="chat-container">
+          <div class="chat-header">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="width: 10px; height: 10px; border-radius: 50%; background-color: var(--success); box-shadow: 0 0 10px var(--success);"></div>
+              <div>
+                <span id="chat-session-title" style="font-weight: 700; font-size: 0.95rem;">Conversational Practice</span>
+                <span class="text-subtle" style="font-size: 0.72rem; display: block;">Silent Background Analysis Active</span>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <button id="tts-toggle-btn" class="btn btn-secondary" style="padding: 6px 14px; font-size: 0.85rem;">
+                🔊 Audio: ON
+              </button>
+              <button id="end-session-btn" class="btn btn-primary" style="padding: 6px 16px; font-size: 0.85rem;">
+                🏁 End & Score Session
+              </button>
+            </div>
+          </div>
+
+          <div id="chat-messages" class="chat-messages"></div>
+          <div id="retry-diff-container" style="padding: 0 20px;"></div>
+
+          <div class="chat-input-bar">
+            <button id="mic-toggle-btn" class="mic-btn" title="Speak via Web Speech API">🎤</button>
+            <input
+              type="text"
+              id="chat-text-input"
+              class="chat-input-field"
+              placeholder="Speak or type your message... (Enter to send)"
+              autocomplete="off"
+            >
+            <button id="send-msg-btn" class="btn btn-primary" style="padding: 11px 20px;">Send</button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="module" src="/js/pages/chat.js"></script>
+</body>
+</html>

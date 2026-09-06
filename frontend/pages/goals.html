@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Goals & Achievements | Vocalis AI</title>
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/typography.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <style>
+    .badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .badge-card {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .badge-card.locked {
+      opacity: 0.35;
+      filter: grayscale(1);
+    }
+  </style>
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-mount"></div>
+    <div class="main-wrapper">
+      <div id="header-mount"></div>
+
+      <main class="content-container">
+        <div style="margin-bottom: 24px;">
+          <h1 class="text-gradient">Goals & Achievements</h1>
+          <p class="text-lead">Set tangible skill targets and unlock trophies through consistent practice.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px;">
+          <div class="card">
+            <h3 style="margin-bottom: 16px;">Active Goals</h3>
+            <div id="goals-list-container"></div>
+          </div>
+
+          <div class="card">
+            <h3 style="margin-bottom: 16px;">Set a New Goal</h3>
+            <form id="create-goal-form">
+              <div class="form-group">
+                <label class="form-label" for="goal-target-area">Target Area</label>
+                <select id="goal-target-area" class="form-select">
+                  <option value="interview_readiness">Interview Readiness</option>
+                  <option value="general_fluency">General Fluency</option>
+                  <option value="reduce_fillers">Reduce Verbal Fillers</option>
+                  <option value="storytelling_mastery">Storytelling Mastery</option>
+                  <option value="public_speaking">Public Speaking & Presentations</option>
+                  <option value="vocabulary_expansion">Vocabulary Expansion</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="goal-title">Goal Name</label>
+                <input type="text" id="goal-title" class="form-input" required placeholder="e.g. Score 85+ on Technical Interview">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="goal-metric">Target Score Benchmark</label>
+                <input type="number" id="goal-metric" class="form-input" min="50" max="100" value="80">
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 8px;">Create Goal</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Achievements Gallery</h3>
+          <p class="text-sub">Badges earned through consistency and high scores</p>
+          <div id="achievements-catalog-grid" class="badge-grid"></div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="module" src="/js/pages/goals.js"></script>
+</body>
+</html>

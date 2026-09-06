@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interview Practice | Vocalis AI</title>
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/typography.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/chat.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-mount"></div>
+    <div class="main-wrapper">
+      <div id="header-mount"></div>
+
+      <main class="content-container">
+        <div style="margin-bottom: 24px;">
+          <h1>Interview Simulation</h1>
+          <p class="text-lead">Master behavioral storytelling using the STAR framework or sharpen technical explanations.</p>
+        </div>
+
+        <div style="display: flex; gap: 12px; margin-bottom: 24px;">
+          <button id="track-hr-btn" class="btn btn-primary">💼 HR Behavioral Track (STAR)</button>
+          <button id="track-tech-btn" class="btn btn-secondary">💻 Technical Communication Track</button>
+        </div>
+
+        <div class="card" style="margin-bottom: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <span id="question-progress-label" class="badge badge-primary">Question 1 of 5</span>
+            <span id="track-badge" class="badge badge-success">HR Track</span>
+          </div>
+
+          <h3 id="current-question-text" style="margin-bottom: 20px; font-size: 1.3rem;">
+            Loading question...
+          </h3>
+
+          <div class="form-group">
+            <label class="form-label" for="interview-answer-input">Your Spoken or Written Answer</label>
+            <textarea id="interview-answer-input" class="form-textarea" rows="6" placeholder="Structure your answer clearly: Situation, Task, Action, Result..."></textarea>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <button id="interview-mic-btn" class="btn btn-secondary">
+              🎤 Speak Answer
+            </button>
+            <button id="submit-answer-btn" class="btn btn-primary">
+              Submit Answer & Continue →
+            </button>
+          </div>
+        </div>
+
+        <!-- Feedback Card on Prior Question -->
+        <div id="answer-feedback-box" style="display: none;" class="card">
+          <!-- Injected dynamically -->
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="module" src="/js/pages/interview.js"></script>
+</body>
+</html>

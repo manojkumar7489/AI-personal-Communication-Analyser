@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Group Discussion Room | Vocalis AI</title>
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/typography.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/chat.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-mount"></div>
+    <div class="main-wrapper">
+      <div id="header-mount"></div>
+
+      <main class="content-container">
+        <div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h1 class="text-gradient">Group Discussion Room</h1>
+            <p class="text-sub" id="gd-active-topic">Topic: Initializing debate...</p>
+          </div>
+          <span class="badge badge-primary">👥 3 Virtual Peers Active</span>
+        </div>
+
+        <div class="chat-container" style="height: calc(100vh - 210px);">
+          <div id="gd-messages-log" class="chat-messages"></div>
+          <div id="gd-feedback-banner" style="display: none; padding: 12px 24px; background: rgba(99, 102, 241, 0.12); border-top: 1px solid var(--primary); font-size: 0.88rem; color: var(--primary-light);"></div>
+
+          <div class="chat-input-bar">
+            <button id="gd-mic-btn" class="mic-btn" title="Speak into debate">🎤</button>
+            <input type="text" id="gd-input-field" class="chat-input-field" placeholder="Interject, build on Maya's point, or provide counter-evidence...">
+            <button id="gd-send-btn" class="btn btn-primary" style="padding: 11px 22px;">Enter Debate</button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="module" src="/js/pages/discussion.js"></script>
+</body>
+</html>

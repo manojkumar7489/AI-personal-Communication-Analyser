@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile & Preferences | Vocalis AI</title>
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/typography.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-mount"></div>
+    <div class="main-wrapper">
+      <div id="header-mount"></div>
+
+      <main class="content-container">
+        <div style="margin-bottom: 24px;">
+          <h1 class="text-gradient">Profile & Preferences</h1>
+          <p class="text-lead">Personalize your coaching posture, speaking targets, and browser voice configurations.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+          <div class="card">
+            <h3 style="margin-bottom: 16px;">Account Details</h3>
+            <form id="profile-form">
+              <div class="form-group">
+                <label class="form-label" for="profile-name">Full Name</label>
+                <input type="text" id="profile-name" class="form-input" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="profile-email">Email Address</label>
+                <input type="email" id="profile-email" class="form-input" disabled style="opacity: 0.6;">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="profile-proficiency">Proficiency Focus</label>
+                <select id="profile-proficiency" class="form-select">
+                  <option value="beginner">Foundational (Sentence formation)</option>
+                  <option value="intermediate">Intermediate (Clarity & flow)</option>
+                  <option value="advanced">Advanced (Executive presence)</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Save Profile</button>
+            </form>
+          </div>
+
+          <div class="card">
+            <h3 style="margin-bottom: 16px;">AI Personality & Voice</h3>
+
+            <div class="form-group" style="margin-bottom: 20px;">
+              <label class="form-label" for="ai-personality-select">AI Coaching Posture</label>
+              <select id="ai-personality-select" class="form-select">
+                <option value="friend">Friend Mode (Natural, casual, supportive companion)</option>
+                <option value="coach">Coach Mode (Disciplined, energetic, actionable feedback)</option>
+                <option value="interviewer">Interviewer Mode (Professional, rigorous hiring manager)</option>
+                <option value="mentor">Mentor Mode (Empathetic, strategic, executive framing)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="voice-rate">Speaking Rate (<span id="voice-rate-val">1.0</span>x)</label>
+              <input type="range" id="voice-rate" min="0.7" max="1.5" step="0.1" value="1.0" class="form-input">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="voice-pitch">Voice Pitch (<span id="voice-pitch-val">1.0</span>)</label>
+              <input type="range" id="voice-pitch" min="0.7" max="1.3" step="0.1" value="1.0" class="form-input">
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-top: 20px;">
+              <button id="test-voice-btn" class="btn btn-secondary">🔊 Test Voice</button>
+              <button id="save-settings-btn" class="btn btn-primary">Save Settings</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="module" src="/js/pages/profile.js"></script>
+</body>
+</html>

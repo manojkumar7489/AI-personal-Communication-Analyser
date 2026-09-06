@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Vocalis AI</title>
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/typography.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-mount"></div>
+    <div class="main-wrapper">
+      <div id="header-mount"></div>
+
+      <main class="content-container">
+        <!-- Top Metric Counters -->
+        <div class="metrics-grid">
+          <div class="metric-card" style="align-items: center; text-align: center;">
+            <div id="dashboard-score-dial" class="score-dial" style="--score-pct: 70;">
+              <div class="score-dial-inner">
+                <span id="dashboard-overall-score" class="score-dial-number">--</span>
+                <span class="text-subtle" style="font-size: 0.72rem; margin-top: 2px;">OVERALL</span>
+              </div>
+            </div>
+            <p class="text-sub" style="margin: 0;">Communication Index</p>
+          </div>
+
+          <div class="metric-card">
+            <span class="text-subtle">LIFETIME SESSIONS</span>
+            <div id="metric-sessions" class="metric-value">--</div>
+            <p class="text-sub">Completed practice rounds</p>
+          </div>
+
+          <div class="metric-card">
+            <span class="text-subtle">MINUTES SPOKEN</span>
+            <div id="metric-minutes" class="metric-value">--</div>
+            <p class="text-sub">Active speaking time</p>
+          </div>
+
+          <div class="metric-card">
+            <span class="text-subtle">CURRENT STREAK</span>
+            <div id="metric-streak" class="metric-value" style="color: var(--warning);">--</div>
+            <p class="text-sub">Consecutive days active</p>
+          </div>
+        </div>
+
+        <!-- Workout & Radar Chart -->
+        <div style="display: grid; grid-template-columns: 1.25fr 1fr; gap: 24px; margin-bottom: 32px;">
+          <div class="card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+              <div>
+                <h3>Today's Workout</h3>
+                <p class="text-sub">Personalized based on recent speech patterns</p>
+              </div>
+              <span id="workout-bonus-badge" class="badge badge-success">+100 Bonus XP</span>
+            </div>
+
+            <div id="workout-tasks-list" class="workout-list">
+              <p class="text-sub">Loading workout plan...</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 style="margin-bottom: 6px;">6-Axis Skill Radar</h3>
+            <p class="text-sub" style="margin-bottom: 16px;">Precision balance across core communication pillars</p>
+            <div class="chart-container">
+              <canvas id="skillsRadarChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="module" src="/js/pages/dashboard.js"></script>
+</body>
+</html>

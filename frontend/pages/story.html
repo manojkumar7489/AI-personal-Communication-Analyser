@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Storytelling Mode | Vocalis AI</title>
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/typography.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-mount"></div>
+    <div class="main-wrapper">
+      <div id="header-mount"></div>
+
+      <main class="content-container">
+        <div style="margin-bottom: 24px;">
+          <h1 class="text-gradient">Storytelling Practice</h1>
+          <p class="text-lead">Master narrative arcs, sensory hooks, emotional connection, and memorable conclusions.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.05fr 1.15fr; gap: 24px;">
+          <div class="card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+              <h3>Choose a Story Topic</h3>
+              <button id="refresh-topic-btn" class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.85rem;">🎲 Random Prompt</button>
+            </div>
+
+            <div id="selected-topic-box" style="background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.25); border-radius: var(--radius-sm); padding: 18px; margin-bottom: 20px;">
+              <h4 id="topic-title" style="color: var(--primary-light); margin-bottom: 4px;">My First Day at College</h4>
+              <p id="topic-desc" class="text-sub" style="font-size: 0.9rem;">Describe arriving on campus, your initial emotions, and an unexpected encounter that broke the ice.</p>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="story-textarea">Tell Your Story (Speak or Type)</label>
+              <textarea id="story-textarea" class="form-textarea" rows="8" placeholder="Start your story here... Hook the audience with the opening scene."></textarea>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px;">
+              <button id="story-mic-btn" class="btn btn-secondary">
+                🎤 <span id="mic-status-text">Speak Story</span>
+              </button>
+              <button id="submit-story-btn" class="btn btn-primary">
+                Analyze Story Arc →
+              </button>
+            </div>
+          </div>
+
+          <div id="story-review-card" class="card">
+            <div style="text-align: center; padding: 50px 24px; color: var(--text-dim);">
+              <div style="font-size: 3.5rem; margin-bottom: 12px; filter: drop-shadow(0 0 15px var(--primary-glow));">📖</div>
+              <h3 style="color: #ffffff;">Narrative Arc Breakdown</h3>
+              <p style="margin-top: 8px;">Submit your story to see ratings on structure, emotional engagement, sensory vocabulary, and recommended narrative blueprints.</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="module" src="/js/pages/story.js"></script>
+</body>
+</html>

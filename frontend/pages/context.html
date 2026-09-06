@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Communication Contexts | Vocalis AI</title>
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/typography.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <style>
+    .context-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 22px;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-mount"></div>
+    <div class="main-wrapper">
+      <div id="header-mount"></div>
+
+      <main class="content-container">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <h1 class="text-gradient">Communication Contexts</h1>
+            <p class="text-lead" style="margin-top: 4px;">Choose a scenario. The AI automatically adapts its vocabulary, standards, and conversation style.</p>
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button class="btn btn-secondary filter-btn active" data-category="all">All</button>
+            <button class="btn btn-secondary filter-btn" data-category="Everyday">Everyday</button>
+            <button class="btn btn-secondary filter-btn" data-category="Workplace">Workplace</button>
+            <button class="btn btn-secondary filter-btn" data-category="Technical">Technical</button>
+            <button class="btn btn-secondary filter-btn" data-category="Career">Career</button>
+          </div>
+        </div>
+
+        <div id="context-cards-container" class="context-grid">
+          <p class="text-sub">Loading available scenarios...</p>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="module" src="/js/pages/context.js"></script>
+</body>
+</html>

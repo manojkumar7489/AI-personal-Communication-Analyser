@@ -1,0 +1,105 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-deep) !important;
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  animation: pageEnter 0.7s var(--ease-smooth) both;
+}
+
+@keyframes pageEnter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Ambient Animated Glowing Mesh */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 12% 15%, rgba(99, 102, 241, 0.18) 0px, transparent 45%),
+    radial-gradient(circle at 88% 85%, rgba(6, 182, 212, 0.16) 0px, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.08) 0px, transparent 65%);
+  z-index: -2;
+  pointer-events: none;
+  animation: meshBreath 20s ease-in-out infinite alternate;
+}
+
+@keyframes meshBreath {
+  0% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.08) translate(-15px, 20px); }
+  100% { transform: scale(1.02) translate(20px, -15px); }
+}
+
+/* Grid Matrix */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Custom Cyber Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+  box-shadow: 0 0 12px var(--primary-glow);
+}
+
+button, input, textarea, select {
+  font-family: inherit;
+  color: inherit;
+}
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+::selection {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

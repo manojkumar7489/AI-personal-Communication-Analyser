@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application Settings | Vocalis AI</title>
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/typography.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Dynamic Sidebar -->
+    <div id="sidebar-mount"></div>
+
+    <div class="main-wrapper">
+      <!-- Dynamic Top Header -->
+      <div id="header-mount"></div>
+
+      <main class="content-container">
+        <div style="margin-bottom: 24px;">
+          <h1>Application Settings</h1>
+          <p class="text-lead">Fine-tune voice synthesis parameters, interactive coaching feedback, and interface preferences.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px;">
+          <!-- Voice & Speech Engine Configuration -->
+          <div class="card">
+            <h3 style="margin-bottom: 8px;">Voice Synthesis & Speech Engine</h3>
+            <p class="text-sub" style="margin-bottom: 20px;">Configure how Vocalis reads coaching feedback and conversational responses.</p>
+
+            <form id="voice-settings-form">
+              <div class="form-group">
+                <label class="form-label" for="voice-select">Preferred AI Voice</label>
+                <select id="voice-select" class="form-select">
+                  <option value="">Loading browser system voices...</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <label class="form-label" for="setting-voice-rate">Speech Pace (Rate)</label>
+                  <span id="label-voice-rate" class="badge badge-primary">1.0x</span>
+                </div>
+                <input type="range" id="setting-voice-rate" class="form-input" min="0.6" max="1.6" step="0.05" value="1.0">
+                <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-subtle); margin-top: 4px;">
+                  <span>0.6x (Deliberate)</span>
+                  <span>1.0x (Standard)</span>
+                  <span>1.6x (Fast)</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <label class="form-label" for="setting-voice-pitch">Vocal Pitch</label>
+                  <span id="label-voice-pitch" class="badge badge-primary">1.0</span>
+                </div>
+                <input type="range" id="setting-voice-pitch" class="form-input" min="0.7" max="1.4" step="0.05" value="1.0">
+                <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-subtle); margin-top: 4px;">
+                  <span>0.7 (Deeper)</span>
+                  <span>1.0 (Natural)</span>
+                  <span>1.4 (Higher)</span>
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-top: 20px;">
+                <label style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+                  <input type="checkbox" id="setting-autoplay" style="width: 18px; height: 18px; accent-color: var(--color-primary);" checked>
+                  <div>
+                    <span style="font-weight: 600; font-size: 0.95rem; color: var(--text-main); display: block;">Auto-Play Spoken Feedback</span>
+                    <span class="text-subtle" style="font-size: 0.8rem;">Automatically vocalize AI conversational turns and feedback</span>
+                  </div>
+                </label>
+              </div>
+
+              <div style="display: flex; gap: 12px; margin-top: 28px;">
+                <button type="button" id="preview-speech-btn" class="btn btn-secondary" style="flex: 1;">
+                  🔊 Sample Voice
+                </button>
+                <button type="submit" id="save-speech-btn" class="btn btn-primary" style="flex: 1;">
+                  Save Speech Settings
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Session & Privacy Preferences -->
+          <div style="display: flex; flex-direction: column; gap: 24px;">
+            <div class="card">
+              <h3 style="margin-bottom: 8px;">Coaching Interventions</h3>
+              <p class="text-sub" style="margin-bottom: 16px;">Control how proactively the background analyzer provides real-time coaching suggestions.</p>
+
+              <div class="form-group">
+                <label class="form-label" for="setting-intervention-frequency">Intervention Sensitivity</label>
+                <select id="setting-intervention-frequency" class="form-select">
+                  <option value="balanced" selected>Balanced (Constructive interjections during noticeable flaws)</option>
+                  <option value="strict">Strict (Immediate coaching on all fillers and loose transitions)</option>
+                  <option value="minimal">Minimal (Natural dialogue only; score strictly at the end)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Danger Zone -->
+            <div class="card" style="border-color: rgba(239, 68, 68, 0.4);">
+              <h3 style="color: var(--color-danger); margin-bottom: 8px;">Session Management</h3>
+              <p class="text-sub" style="margin-bottom: 16px;">Clear local caching tokens or sign out from all active browser sessions.</p>
+
+              <div style="display: flex; gap: 12px;">
+                <button type="button" id="clear-cache-btn" class="btn btn-secondary" style="font-size: 0.85rem;">
+                  Clear Local Storage
+                </button>
+                <button type="button" id="global-signout-btn" class="btn btn-danger" style="font-size: 0.85rem;">
+                  Sign Out Everywhere
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="module" src="/js/pages/settings.js"></script>
+</body>
+</html>

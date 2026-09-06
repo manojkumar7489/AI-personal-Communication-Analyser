@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vocalis AI | Authentic Communication Coach</title>
+  <link rel="stylesheet" href="/css/variable.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/typography.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <style>
+    .landing-nav {
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(6, 9, 18, 0.7);
+      backdrop-filter: blur(20px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .hero-section {
+      padding: 110px 24px 70px;
+      text-align: center;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1240px;
+      margin: 40px auto 100px;
+      padding: 0 24px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="landing-nav">
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <div style="width: 40px; height: 40px; border-radius: var(--radius-sm); background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; align-items: center; justify-content: center; font-weight: 800; box-shadow: 0 0 20px var(--primary-glow);">V</div>
+      <span style="font-size: 1.3rem; font-weight: 800; letter-spacing: -0.02em;">Vocalis AI</span>
+    </div>
+    <div style="display: flex; gap: 12px;">
+      <a href="/pages/login.html" class="btn btn-secondary">Log In</a>
+      <a href="/pages/signup.html" class="btn btn-primary">Start Speaking Free →</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero-section">
+      <span class="badge badge-primary" style="margin-bottom: 20px; padding: 6px 16px;">
+        Next-Gen Conversational Intelligence
+      </span>
+      <h1 style="margin-bottom: 24px;">Talk Like a Friend.<br><span class="text-gradient">Communicate Like a Leader.</span></h1>
+      <p class="text-lead" style="margin-bottom: 36px;">
+        Speak naturally, discover your unconscious verbal habits, eliminate fillers, and refine high-stakes interview delivery through an iterative retry loop.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 16px;">
+        <a href="/pages/signup.html" class="btn btn-primary" style="font-size: 1.05rem; padding: 14px 30px;">
+          Begin Practice Now →
+        </a>
+        <a href="#features" class="btn btn-secondary" style="font-size: 1.05rem; padding: 14px 26px;">
+          Explore Modules
+        </a>
+      </div>
+    </section>
+
+    <section id="features" class="feature-grid">
+      <div class="card card-hover">
+        <div style="font-size: 2.2rem; margin-bottom: 14px;">💬</div>
+        <h3>Silent Analytical Coaching</h3>
+        <p style="margin-top: 8px;">Converse naturally without pedantic interruptions. The AI analyzes patterns silently and interjects only when feedback is critical.</p>
+      </div>
+      <div class="card card-hover">
+        <div style="font-size: 2.2rem; margin-bottom: 14px;">🎭</div>
+        <h3>18 Communication Contexts</h3>
+        <p style="margin-top: 8px;">Roleplay everything from casual chats to technical architecture debates, executive client meetings, and public keynotes.</p>
+      </div>
+      <div class="card card-hover">
+        <div style="font-size: 2.2rem; margin-bottom: 14px;">🧠</div>
+        <h3>Persistent Weakness Memory</h3>
+        <p style="margin-top: 8px;">Overused filler words like "basically" and tendencies to skip concrete examples are remembered across sessions to drive long-term improvement.</p>
+      </div>
+      <div class="card card-hover">
+        <div style="font-size: 2.2rem; margin-bottom: 14px;">🔄</div>
+        <h3>Iterative Retry Loop</h3>
+        <p style="margin-top: 8px;">Try answers again immediately. The system computes score deltas (+14 pts) to show exactly what improved.</p>
+      </div>
+      <div class="card card-hover">
+        <div style="font-size: 2.2rem; margin-bottom: 14px;">👥</div>
+        <h3>Multi-Agent Group Discussion</h3>
+        <p style="margin-top: 8px;">Debate in a room simulated with 3 virtual peers (Aarav, Maya, Leo). Practice asserting viewpoints and handling rebuttals.</p>
+      </div>
+      <div class="card card-hover">
+        <div style="font-size: 2.2rem; margin-bottom: 14px;">💼</div>
+        <h3>STAR Interview Simulator</h3>
+        <p style="margin-top: 8px;">Practice HR behavioral questions and technical drills with automated feedback on your structure, clarity, and metrics.</p>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="/js/pages/landing.js"></script>
+</body>
+</html>

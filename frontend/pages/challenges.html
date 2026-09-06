@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speaking Challenges | Vocalis AI</title>
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/typography.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <style>
+    .timer-ring-wrapper {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      margin: 18px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .timer-ring-svg {
+      transform: rotate(-90deg);
+      width: 220px;
+      height: 220px;
+    }
+    .timer-ring-bg {
+      stroke: rgba(255, 255, 255, 0.06);
+      stroke-width: 8;
+      fill: none;
+    }
+    .timer-ring-progress {
+      stroke: url(#timerGradient);
+      stroke-width: 8;
+      fill: none;
+      stroke-linecap: round;
+      stroke-dasharray: 565;
+      stroke-dashoffset: 0;
+      transition: stroke-dashoffset 1s linear;
+      filter: drop-shadow(0 0 8px var(--primary));
+    }
+    .timer-center-content {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .timer-digit {
+      font-size: 3.2rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      color: #ffffff;
+      line-height: 1;
+      text-shadow: 0 0 20px var(--primary-glow);
+    }
+    .timer-digit.pulse {
+      animation: digitPulse 1s infinite alternate;
+    }
+    @keyframes digitPulse {
+      from { transform: scale(1); filter: drop-shadow(0 0 10px var(--primary)); }
+      to { transform: scale(1.06); filter: drop-shadow(0 0 25px var(--danger)); color: #fda4af; }
+    }
+    .soundwave-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      height: 36px;
+      margin: 14px 0;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .soundwave-container.active { opacity: 1; }
+    .soundwave-bar {
+      width: 4px;
+      height: 8px;
+      background: linear-gradient(180deg, var(--secondary), var(--primary));
+      border-radius: 4px;
+      animation: equalize 1.2s ease-in-out infinite alternate;
+    }
+    .soundwave-bar:nth-child(2) { animation-delay: 0.15s; }
+    .soundwave-bar:nth-child(3) { animation-delay: 0.35s; }
+    .soundwave-bar:nth-child(4) { animation-delay: 0.2s; }
+    .soundwave-bar:nth-child(5) { animation-delay: 0.45s; }
+    .soundwave-bar:nth-child(6) { animation-delay: 0.1s; }
+    .soundwave-bar:nth-child(7) { animation-delay: 0.3s; }
+    @keyframes equalize {
+      0% { height: 6px; }
+      50% { height: 32px; box-shadow: 0 0 10px var(--secondary-glow); }
+      100% { height: 12px; }
+    }
+    .prompt-glow-card {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(6, 182, 212, 0.04) 100%);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      padding: 22px;
+      border-radius: var(--radius-md);
+      position: relative;
+      margin: 16px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-mount"></div>
+    <div class="main-wrapper">
+      <div id="header-mount"></div>
+
+      <main class="content-container">
+        <div style="margin-bottom: 24px;">
+          <h1 class="text-gradient">Timed Speaking Sprints</h1>
+          <p class="text-lead">Sharpen on-the-spot fluency, eliminate hesitation, and master pace control under pressure.</p>
+        </div>
+
+        <div style="display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap;">
+          <button class="btn btn-secondary sprint-btn active" data-duration="30">⚡ 30-Second Sprint</button>
+          <button class="btn btn-secondary sprint-btn" data-duration="60">⏱️ 60-Second Challenge</button>
+          <button class="btn btn-secondary sprint-btn" data-duration="120">🎯 2-Minute Deep Dive</button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 24px;">
+          <div class="card" style="text-align: center; border-color: rgba(99, 102, 241, 0.25);">
+            <span class="badge badge-primary">ACTIVE SPRINT TOPIC</span>
+            <div class="prompt-glow-card">
+              <h2 id="sprint-topic" style="font-size: 1.35rem; color: #ffffff; min-height: 52px; display: flex; align-items: center; justify-content: center;">
+                Loading challenge prompt...
+              </h2>
+            </div>
+
+            <div class="timer-ring-wrapper">
+              <svg class="timer-ring-svg" viewBox="0 0 200 200">
+                <defs>
+                  <linearGradient id="timerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#06b6d4" />
+                    <stop offset="100%" stop-color="#6366f1" />
+                  </linearGradient>
+                </defs>
+                <circle class="timer-ring-bg" cx="100" cy="100" r="90" />
+                <circle id="timer-ring-progress" class="timer-ring-progress" cx="100" cy="100" r="90" />
+              </svg>
+              <div class="timer-center-content">
+                <div id="timer-display" class="timer-digit">00:30</div>
+                <span class="text-subtle" style="font-size: 0.72rem; margin-top: 4px;">TIME REMAINING</span>
+              </div>
+            </div>
+
+            <div id="soundwave-viz" class="soundwave-container">
+              <div class="soundwave-bar"></div>
+              <div class="soundwave-bar"></div>
+              <div class="soundwave-bar"></div>
+              <div class="soundwave-bar"></div>
+              <div class="soundwave-bar"></div>
+              <div class="soundwave-bar"></div>
+              <div class="soundwave-bar"></div>
+            </div>
+
+            <div style="display: flex; justify-content: center; gap: 14px; margin-bottom: 20px;">
+              <button id="start-sprint-btn" class="btn btn-primary" style="padding: 12px 32px; font-size: 1rem;">
+                ▶ Start Sprint
+              </button>
+              <button id="stop-sprint-btn" class="btn btn-danger" style="display: none; padding: 12px 32px; font-size: 1rem;">
+                ⏹ Stop & Score
+              </button>
+            </div>
+
+            <div class="form-group" style="text-align: left; margin-top: 10px;">
+              <label class="form-label" style="display: flex; justify-content: space-between;">
+                <span>Live Spoken Transcript</span>
+                <span id="transcript-word-counter" class="text-subtle">0 words</span>
+              </label>
+              <textarea id="sprint-transcript" class="form-textarea" rows="4" placeholder="Your speech will appear here in real-time as you speak..." readonly></textarea>
+            </div>
+          </div>
+
+          <div id="sprint-result-box" class="card" style="display: flex; flex-direction: column; justify-content: center;">
+            <div style="text-align: center; padding: 48px 24px; color: var(--text-dim);">
+              <div style="font-size: 3.5rem; margin-bottom: 16px; filter: drop-shadow(0 0 20px var(--primary-glow));">⚡</div>
+              <h3 style="color: #ffffff; margin-bottom: 8px;">Sprint Evaluation</h3>
+              <p style="font-size: 0.92rem;">Click <strong>Start Sprint</strong> and speak aloud. Vocalis will measure your Words Per Minute (WPM), pause rate, and flow.</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="module" src="/js/pages/challenges.js"></script>
+</body>
+</html>

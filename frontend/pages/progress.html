@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics & History | Vocalis AI</title>
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/typography.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-mount"></div>
+    <div class="main-wrapper">
+      <div id="header-mount"></div>
+
+      <main class="content-container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 14px;">
+          <div>
+            <h1 class="text-gradient">Communication Analytics</h1>
+            <p class="text-lead">Longitudinal metrics tracking scores, fluency trends, and filler word elimination.</p>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-secondary range-btn active" data-range="7d">Last 7 Days</button>
+            <button class="btn btn-secondary range-btn" data-range="30d">Last 30 Days</button>
+            <button class="btn btn-secondary range-btn" data-range="all">All Time</button>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 24px;">
+          <h3 style="margin-bottom: 4px;">Score Trajectory</h3>
+          <p class="text-sub" style="margin-bottom: 16px;">Daily composite communication performance over time</p>
+          <div class="chart-container" style="height: 320px;">
+            <canvas id="timelineLineChart"></canvas>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+          <div class="card">
+            <h3 style="margin-bottom: 6px;">Persistent Weakness Profile</h3>
+            <p class="text-sub" style="margin-bottom: 16px;">Habitual fillers and structural crutches observed across sessions</p>
+            <div id="tracked-weaknesses-list"></div>
+          </div>
+
+          <div class="card">
+            <h3 style="margin-bottom: 6px;">Skill Breakdown</h3>
+            <p class="text-sub" style="margin-bottom: 16px;">Performance benchmarks across all 6 scoring axes</p>
+            <div class="chart-container" style="height: 280px;">
+              <canvas id="analyticsRadarChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="module" src="/js/pages/progress.js"></script>
+</body>
+</html>

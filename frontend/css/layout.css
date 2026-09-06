@@ -1,0 +1,170 @@
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Frosted Glass Sidebar */
+.sidebar {
+  width: 265px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  transition: transform 0.3s var(--ease-elastic);
+}
+
+.sidebar-header {
+  padding: 22px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+  animation: slideInLeft 0.65s var(--ease-elastic) both;
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-18px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.sidebar-logo-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  box-shadow: 0 0 20px var(--primary-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: #ffffff;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 16px 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  position: relative;
+  animation: navLinkIn 0.45s var(--ease-elastic) backwards;
+}
+
+.nav-link:nth-child(1) { animation-delay: 80ms; }
+.nav-link:nth-child(2) { animation-delay: 120ms; }
+.nav-link:nth-child(3) { animation-delay: 160ms; }
+.nav-link:nth-child(4) { animation-delay: 200ms; }
+.nav-link:nth-child(5) { animation-delay: 240ms; }
+.nav-link:nth-child(6) { animation-delay: 280ms; }
+
+@keyframes navLinkIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  transform: translateX(4px);
+}
+
+.nav-link.active {
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0.22), rgba(99, 102, 241, 0.04));
+  color: #ffffff;
+  border-left: 3px solid var(--primary);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.nav-link.active .nav-icon {
+  filter: drop-shadow(0 0 8px var(--primary));
+}
+
+.nav-icon {
+  font-size: 1.15rem;
+  transition: transform var(--transition);
+}
+
+.nav-link:hover .nav-icon {
+  transform: scale(1.15);
+}
+
+/* Main Viewport Shell */
+.main-wrapper {
+  margin-left: 265px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.top-navbar {
+  height: 74px;
+  background: rgba(6, 9, 18, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  animation: topBarIn 0.6s var(--ease-smooth) both;
+}
+
+@keyframes topBarIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.content-container > * {
+  animation: contentRise 0.65s var(--ease-elastic) backwards;
+}
+
+.content-container > *:nth-child(1) { animation-delay: 80ms; }
+.content-container > *:nth-child(2) { animation-delay: 160ms; }
+.content-container > *:nth-child(3) { animation-delay: 240ms; }
+.content-container > *:nth-child(4) { animation-delay: 320ms; }
+
+@keyframes contentRise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.content-container {
+  flex: 1;
+  padding: 32px;
+  max-width: 1340px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 960px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); }
+  .main-wrapper { margin-left: 0; }
+  .content-container { padding: 20px; }
+}
