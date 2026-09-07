@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 let connectionPromise = null;
 
 const connectDB = async () => {
-
   const uri = process.env.MONGODB_URI;
 
   if (!uri) {
@@ -18,14 +17,11 @@ const connectDB = async () => {
     return connectionPromise;
   }
 
-  console.log('[MongoDB] Starting connection...');
-
   try {
-
     connectionPromise = mongoose.connect(uri, {
-      serverSelectionTimeoutMS: 5000,
-      connectTimeoutMS: 5000,
-      socketTimeoutMS: 10000
+      serverSelectionTimeoutMS: 4000,
+      connectTimeoutMS: 4000,
+      socketTimeoutMS: 8000
     });
 
     const connection = await connectionPromise;
@@ -35,16 +31,9 @@ const connectDB = async () => {
     );
 
     return connection;
-
   } catch (error) {
-
     connectionPromise = null;
-
-    console.error(
-      '[MongoDB] Connection error:',
-      error.message
-    );
-
+    console.error('[MongoDB] Connection error:', error.message);
     throw error;
   }
 };
