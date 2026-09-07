@@ -3,43 +3,46 @@ const mongoose = require('mongoose');
 let connectionPromise = null;
 
 const connectDB = async () => {
-  const connUri =
-    process.env.MONGODB_URI ||
-    'mongodb://localhost:27017/vocalis_db';
 
-  // Already connected
+  const uri = process.env.MONGODB_URI;
+
+  if (!uri) {
+    throw new Error('MONGODB_URI is missing');
+  }
+
   if (mongoose.connection.readyState === 1) {
     return mongoose.connection;
   }
 
-  // Reuse an existing connection attempt
   if (connectionPromise) {
     return connectionPromise;
   }
 
+  console.log('[MongoDB] Starting connection...');
+
   try {
-    connectionPromise = mongoose.connect(connUri, {
-      autoIndex: true
+
+    connectionPromise = mongoose.connect(uri, {
+      serverSelectionTimeoutMS: 5000,
+      connectTimeoutMS: 5000,
+      socketTimeoutMS: 10000
     });
 
-    const conn = await connectionPromise;
+    const connection = await connectionPromise;
 
     console.log(
-      `[MongoDB] Connected successfully to host: ${conn.connection.host}`
+      `[MongoDB] Connected successfully: ${connection.connection.host}`
     );
 
-    mongoose.connection.on('error', (err) => {
-      console.error(
-        `[MongoDB] Runtime connection error: ${err.message}`
-      );
-    });
+    return connection;
 
-    return conn;
   } catch (error) {
+
     connectionPromise = null;
 
     console.error(
-      `[MongoDB] Initial connection error: ${error.message}`
+      '[MongoDB] Connection error:',
+      error.message
     );
 
     throw error;

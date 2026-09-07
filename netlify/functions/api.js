@@ -1,11 +1,3 @@
-const dns = require('dns');
-
-// Important for MongoDB Atlas SRV resolution
-dns.setServers([
-  '8.8.8.8',
-  '8.8.4.4'
-]);
-
 const serverless = require('serverless-http');
 
 require('dotenv').config();
@@ -17,10 +9,35 @@ const serverlessHandler = serverless(app);
 
 exports.handler = async (event, context) => {
   try {
+
+    // Allow health check without MongoDB
+    if (
+      event.path === '/api/health' ||
+      event.path.endsWith('/api/health')
+    ) {
+      return {
+        statusCode: 200,
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          status: 'healthy',
+          service: 'Vocalis Communication AI API',
+          mongodb: 'not checked'
+        })
+      };
+    }
+
+    console.log('[Function] Connecting to MongoDB...');
+
     await connectDB();
 
+    console.log('[Function] MongoDB connected');
+
     return await serverlessHandler(event, context);
+
   } catch (error) {
+
     console.error('[Netlify Function Error]', error);
 
     return {
