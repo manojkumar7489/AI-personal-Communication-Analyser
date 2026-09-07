@@ -1,16 +1,10 @@
-const serverless = require('serverless-http');
-
 require('dotenv').config();
-
-const app = require('../../backend/app');
-const connectDB = require('../../backend/config/db');
-
-const serverlessHandler = serverless(app);
 
 exports.handler = async (event, context) => {
   try {
+    console.log('[Function] Request path:', event.path);
 
-    // Allow health check without MongoDB
+    // Health check should work WITHOUT loading Express or MongoDB
     if (
       event.path === '/api/health' ||
       event.path.endsWith('/api/health')
@@ -28,16 +22,22 @@ exports.handler = async (event, context) => {
       };
     }
 
+    // Load these only for actual API requests
+    const serverless = require('serverless-http');
+    const app = require('../../backend/app');
+    const connectDB = require('../../backend/config/db');
+
     console.log('[Function] Connecting to MongoDB...');
 
     await connectDB();
 
     console.log('[Function] MongoDB connected');
 
+    const serverlessHandler = serverless(app);
+
     return await serverlessHandler(event, context);
 
   } catch (error) {
-
     console.error('[Netlify Function Error]', error);
 
     return {
